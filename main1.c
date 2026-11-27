@@ -46,7 +46,10 @@ int is_lower(char c){
 char normalise(char c){
     if (!is_upper(c) && !is_lower(c)) // !(is_upper(c) || is_lower(c)) -> De Morgen
         return -1;
-    return c + ('a' - 'A');
+    if (is_upper(c))
+        return c + ('a' - 'A');
+    else
+        return c;
 }
 
 int main(){
@@ -58,7 +61,7 @@ int main(){
     dump(wort2);
     check(wort1, wort2, 'o');
     dump(wort2);
-    
+
     free(wort2);
 
     return 0;
